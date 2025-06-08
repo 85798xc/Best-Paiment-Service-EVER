@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: PaymentServiceApplicationII
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment_service_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: false
