@@ -1,15 +1,13 @@
 package org.example.paymentderviceaplicationii.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.example.paymentderviceaplicationii.converter.RoleConverter;
+import org.example.paymentderviceaplicationii.model.enums.Role;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -17,21 +15,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 public class User extends BaseEntity {
 
-    @Column
-    private String username;
 
-    @Column
+    private String username;
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column
+    @Convert(converter = RoleConverter.class)
     private Role role;
 
-    public enum Role {
-        USER,
-        ADMIN
-    }
+    @OneToMany(mappedBy = "user")
+    private List<BankAccount> bankAccounts;
+
 }

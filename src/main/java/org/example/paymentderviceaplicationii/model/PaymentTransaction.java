@@ -1,17 +1,12 @@
 package org.example.paymentderviceaplicationii.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.paymentderviceaplicationii.converter.StatusConverter;
+import org.example.paymentderviceaplicationii.model.enums.Status;
 
 import java.math.BigDecimal;
 
@@ -21,17 +16,13 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 public class PaymentTransaction extends BaseEntity {
 
-    @Column
     private BigDecimal amount;
 
-    @Column(length = 3)
     private String currency;
 
-    @Enumerated(EnumType.STRING)
-    @Column
+    @Convert(converter = StatusConverter.class)
     private Status status;
 
     private String description;
@@ -46,9 +37,4 @@ public class PaymentTransaction extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public enum Status {
-        PENDING,
-        COMPLETED,
-        FAILED
-    }
 }
