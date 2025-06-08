@@ -10,4 +10,4 @@ spring:
     database: postgresql
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
