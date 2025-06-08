@@ -26,6 +26,7 @@ public class PaymentTransaction extends BaseEntity {
     private Status status;
 
     private String description;
+
     private String destination;
 
     @ManyToOne
