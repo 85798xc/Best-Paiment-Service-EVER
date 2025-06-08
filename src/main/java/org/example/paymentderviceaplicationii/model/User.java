@@ -1,18 +1,23 @@
 package org.example.paymentderviceaplicationii.model;
 
-import jakarta.persistence.*;
-import org.example.paymentderviceaplicationii.converter.RoleConverter;
-import org.example.paymentderviceaplicationii.model.enums.Role;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.paymentderviceaplicationii.converter.RoleConverter;
+import org.example.paymentderviceaplicationii.model.enums.Role;
+
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class User extends BaseEntity {
@@ -24,6 +29,6 @@ public class User extends BaseEntity {
     @Convert(converter = RoleConverter.class)
     private Role role;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<BankAccount> bankAccounts;
 }

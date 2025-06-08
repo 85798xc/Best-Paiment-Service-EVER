@@ -1,6 +1,7 @@
 package org.example.paymentderviceaplicationii.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "payment_transaction")
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class PaymentTransaction extends BaseEntity {
