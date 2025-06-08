@@ -1,6 +1,5 @@
 package org.example.paymentderviceaplicationii.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,10 +19,8 @@ import java.math.BigDecimal;
 @Setter
 public class BankAccount extends BaseEntity {
 
-    @Column(name = "number")
     private String accountNumber;
 
-    @Column
     private BigDecimal balance;
 
     @ManyToOne

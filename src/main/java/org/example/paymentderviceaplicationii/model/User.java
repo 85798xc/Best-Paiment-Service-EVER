@@ -17,14 +17,14 @@ import java.util.List;
 @Setter
 public class User extends BaseEntity {
 
-
     private String username;
+
     private String password;
 
     @Convert(converter = RoleConverter.class)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<BankAccount> bankAccounts;
 
 }
