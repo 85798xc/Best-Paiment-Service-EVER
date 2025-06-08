@@ -26,5 +26,4 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<BankAccount> bankAccounts;
-
 }
