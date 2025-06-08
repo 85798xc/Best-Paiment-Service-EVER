@@ -3,7 +3,7 @@ package org.example.paymentderviceaplicationii.model;
 import jakarta.persistence.*;
 import org.example.paymentderviceaplicationii.converter.RoleConverter;
 import org.example.paymentderviceaplicationii.model.enums.Role;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class User extends BaseEntity {
