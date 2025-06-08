@@ -4,7 +4,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 import org.example.paymentderviceaplicationii.model.enums.Role;
 
-@Converter
+@Converter(autoApply = true)
 public class RoleConverter implements AttributeConverter<Role, String> {
 
     @Override
