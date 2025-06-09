@@ -15,3 +15,4 @@ spring:
     api:
       publicKey: pk_test_51RV9qdQ8kxyCHbY2fZLrvE6TBiNrL1PJT5D6KMnNFD5VHbvvjyGEzJZCunH3n1sorS0AplLEQVKGyKW3K3qo87qe00tXdabphf
       secretKey: sk_test_51RV9qdQ8kxyCHbY2IbwBa9ZNdrLX3qRBKBwp5KUj2wTvz4Rts8SrHT7N002qnTSivdX5GvXsiujccWVHr41ZD76O003MYtuenV
+
