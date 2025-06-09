@@ -13,5 +13,4 @@ spring:
     show-sql: true
   stripe:
     api:
-      publicKey:
-      secretKey:
+
