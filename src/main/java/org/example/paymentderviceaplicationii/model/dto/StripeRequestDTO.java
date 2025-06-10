@@ -15,12 +15,24 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StripeRequestDTO {
+    @Email
+    private String email;
+
+    @NotBlank
+    @Size(min = 1, max = 100)
+    private String productName;
+
+    @NotNull
+    @Min(1)
+    private Long quantity;
+
     @NotNull
     @Min(1)
     private Long amount;
 
-    @Email
-    private String email;
+    @NotBlank
+    @Size(min = 1, max = 3)
+    private String currency;
 
     @NotBlank
     @Size(min = 4)
