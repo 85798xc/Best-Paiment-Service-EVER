@@ -1,11 +1,7 @@
 package org.example.paymentderviceaplicationii.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.paymentderviceaplicationii.converter.StatusConverter;
 import org.example.paymentderviceaplicationii.model.enums.Status;
 
@@ -17,6 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class PaymentTransaction extends BaseEntity {
 
     private BigDecimal amount;

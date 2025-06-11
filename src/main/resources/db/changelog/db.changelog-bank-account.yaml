@@ -23,11 +23,6 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: role
-                  type: varchar(7)
-                  constraints:
-                    nullable: false
-              - column:
                   name: user_id
                   type: bigint
                   constraints:

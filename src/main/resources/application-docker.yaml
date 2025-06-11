@@ -1,14 +1,8 @@
 spring:
-  profiles:
-    active: local
-
-  application:
-    name: PaymentServiceApplicationII
-
   kafka:
     topic:
       name: payment-topic
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092
     consumer:
       group-id: payment-group
       auto-offset-reset: earliest
@@ -23,10 +17,8 @@ spring:
       properties:
         partitioner.class: org.example.paymentderviceaplicationii.kafka.KafkaPartitioner
 
-
-
   datasource:
-    url: jdbc:postgresql://localhost:5432/payment_service_db
+    url: jdbc:postgresql://db:5432/payment_service_db
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
