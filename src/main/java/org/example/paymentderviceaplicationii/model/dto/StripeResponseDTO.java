@@ -1,6 +1,8 @@
 package org.example.paymentderviceaplicationii.model.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,8 +11,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class StripeResponseDTO {
-    private String paymentIntentId;
+    @NotBlank
+    private String status;
 
-    private String clientSecret;
+    @NotBlank
+    private String message;
+
+    private String sessionId;
+
+    private String sessionUrl;
 }
