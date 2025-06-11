@@ -21,6 +21,7 @@ import java.util.List;
 @Getter
 @Setter
 public class User extends BaseEntity {
+    private String email;
 
     private String username;
 
