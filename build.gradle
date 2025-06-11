@@ -29,10 +29,16 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation "com.stripe:stripe-java:29.0.0"
+    implementation 'com.stripe:stripe-java:29.0.0'
+    implementation 'com.paypal.sdk:paypal-core:1.7.2'
+    implementation 'com.paypal.sdk:checkout-sdk:2.0.0'
+
     compileOnly 'org.projectlombok:lombok'
+
     runtimeOnly 'org.postgresql:postgresql'
+
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

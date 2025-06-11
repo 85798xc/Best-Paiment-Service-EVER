@@ -2,10 +2,9 @@ spring:
   application:
     name: PaymentServiceApplicationII
   datasource:
-    url: jdbc:postgresql://localhost:5432/payment_service_db
+    url: jdbc:postgresql://localhost:5432/
     username: postgres
-    password: 2ee825a4
-    driver-class-name: org.postgresql.Driver
+    password: postgres
   jpa:
     database: postgresql
     hibernate:
@@ -13,6 +12,11 @@ spring:
     show-sql: true
   stripe:
     api:
-      publicKey: pk_test_51RV9qdQ8kxyCHbY2fZLrvE6TBiNrL1PJT5D6KMnNFD5VHbvvjyGEzJZCunH3n1sorS0AplLEQVKGyKW3K3qo87qe00tXdabphf
-      secretKey: sk_test_51RV9qdQ8kxyCHbY2IbwBa9ZNdrLX3qRBKBwp5KUj2wTvz4Rts8SrHT7N002qnTSivdX5GvXsiujccWVHr41ZD76O003MYtuenV
+     publicKey: pk_test_51RV9qdQ8kxyCHbY2fZLrvE6TBiNrL1PJT5D6KMnNFD5VHbvvjyGEzJZCunH3n1sorS0AplLEQVKGyKW3K3qo87qe00tXdabphf
+     secretKey: sk_test_51RV9qdQ8kxyCHbY2IbwBa9ZNdrLX3qRBKBwp5KUj2wTvz4Rts8SrHT7N002qnTSivdX5GvXsiujccWVHr41ZD76O003MYtuenV
 
+paypal:
+    client:
+      id: AROlulB929_OXXUN8b4TBGOhnuPCFT-MHTfCBPJTTJUQS_RjqRud4RYufr2pTFiMnmSkqUgeK0zWJKZ0
+      secret: ELAhoCAWYbC8AbR88Aq7dxu9IpM3A7lBvYbqIZvkHyKvJb7SVkMn2o57_M6vC-wrB-JH1so6E_2zxiEP
+    mode: sandbox
