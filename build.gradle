@@ -30,6 +30,10 @@ dependencies {
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation "com.stripe:stripe-java:29.0.0"
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation("org.apache.xmlgraphics:fop:2.10")
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.3'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
