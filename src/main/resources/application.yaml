@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/payment_service_db
     username: postgres
-    password: 2ee825a4
+    password:
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
@@ -18,8 +18,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: imatveyadam@gmail.com
-    password: lyux zump aqtf cgon
+    username: gmail@gmail.com
+    password: password
     properties:
       mail:
         smtp:
