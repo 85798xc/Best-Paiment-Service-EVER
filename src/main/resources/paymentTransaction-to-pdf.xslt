@@ -39,21 +39,21 @@
 
                         <fo:block>
                             <fo:inline>Amount: </fo:inline>
-                            <xsl:value-of select="paymentTransactionDTO/amount"/>
+                            <xsl:value-of select="paymentTransactionRequestDTO/amount"/>
                             <xsl:choose>
-                                <xsl:when test="paymentTransactionDTO/currency='EUR'">€</xsl:when>
-                                <xsl:when test="paymentTransactionDTO/currency='USD'">$</xsl:when>
-                                <xsl:when test="paymentTransactionDTO/currency='GBP'">£</xsl:when>
+                                <xsl:when test="paymentTransactionRequestDTO/currency='EUR'">€</xsl:when>
+                                <xsl:when test="paymentTransactionRequestDTO/currency='USD'">$</xsl:when>
+                                <xsl:when test="paymentTransactionRequestDTO/currency='GBP'">£</xsl:when>
                             </xsl:choose>
 
                         </fo:block>
                         <fo:block>
                             <fo:inline>Status: </fo:inline>
-                            <xsl:value-of select="paymentTransactionDTO/status"/>
+                            <xsl:value-of select="paymentTransactionRequestDTO/status"/>
                         </fo:block>
                         <fo:block>
                             <fo:inline>Description: </fo:inline>
-                            <xsl:value-of select="paymentTransactionDTO/description"/>
+                            <xsl:value-of select="paymentTransactionRequestDTO/description"/>
                         </fo:block>
                     </fo:block>
                 </fo:flow>

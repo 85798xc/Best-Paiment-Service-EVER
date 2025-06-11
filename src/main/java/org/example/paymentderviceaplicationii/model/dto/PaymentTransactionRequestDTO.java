@@ -10,9 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.paymentderviceaplicationii.model.enums.PaymentProvider;
 import org.example.paymentderviceaplicationii.model.enums.Status;
-
-import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -20,7 +19,10 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PaymentTransactionDTO {
+public class PaymentTransactionRequestDTO {
+    @NotNull
+    private PaymentProvider paymentProvider;
+
     @NotNull
     private Long amount;
 

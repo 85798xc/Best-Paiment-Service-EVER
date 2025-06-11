@@ -33,18 +33,10 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: destination
+                  name: userPaymentEmail
                   type: varchar(255)
                   constraints:
                     nullable: false
-              - column:
-                  name: bank_account_id
-                  type: bigint
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_bank_account_id
-                    referencedTableName: bank_account
-                    referencedColumnNames: id
               - column:
                   name: user_id
                   type: bigint

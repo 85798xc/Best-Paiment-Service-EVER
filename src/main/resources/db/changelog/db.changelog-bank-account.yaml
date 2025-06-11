@@ -17,6 +17,7 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
+                    unique: true
               - column:
                   name: balance
                   type: decimal(19, 2)
