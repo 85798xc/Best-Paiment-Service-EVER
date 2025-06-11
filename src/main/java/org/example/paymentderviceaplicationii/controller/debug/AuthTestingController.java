@@ -1,4 +1,4 @@
-package org.example.paymentderviceaplicationii.controller;
+package org.example.paymentderviceaplicationii.controller.debug;
 
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.User;
