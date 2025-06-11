@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Getter
 public class PayPalConfig {
-    @Value("${paypal.client.id}")
+    @Value("${spring.paypal.client.id}")
     private String clientId;
 
-    @Value("${paypal.client.secret}")
+    @Value("${spring.paypal.client.secret}")
     private String clientSecret;
 
-    @Value("${paypal.mode:sandbox}") // live/sandbox
+    @Value("${spring.paypal.mode}") // live/sandbox
     private String mode;
 }

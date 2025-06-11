@@ -18,8 +18,9 @@ public class PayPalTestController {
     private final PayPalService payPalService;
 
     @PostMapping
-    public ResponseEntity<PayPalResponseDTO> createOrder(@RequestBody PayPalRequestDTO request) throws Exception {
-        PayPalResponseDTO response = payPalService.createPayPalOrder(request);
+    public ResponseEntity<String> createOrder(@RequestBody PayPalRequestDTO request) {
+        String response = payPalService.createPayPalOrder(request);
+
         return ResponseEntity.ok(response);
     }
 

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.config.PayPalConfig;
 import org.example.paymentderviceaplicationii.model.dto.PayPalRequestDTO;
 import org.example.paymentderviceaplicationii.model.dto.PayPalResponseDTO;
+import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -48,7 +49,7 @@ public class PayPalService {
         return response.getBody().get("access_token").toString();
     }
 
-    public PayPalResponseDTO createPayPalOrder(PayPalRequestDTO requestDTO) {
+    public String createPayPalOrder(PayPalRequestDTO requestDTO) {
         String accessToken = getAccessToken();
 
         HttpHeaders headers = new HttpHeaders();
@@ -81,14 +82,12 @@ public class PayPalService {
                 Map.class
         );
 
-        String orderId = response.getBody().get("id").toString();
-        String approvalLink = ((List<Map<String, Object>>) response.getBody().get("links"))
+        return ((List<Map<String, Object>>) response.getBody().get("links"))
                 .stream()
                 .filter(link -> "approve".equals(link.get("rel")))
                 .findFirst()
                 .map(link -> link.get("href").toString())
                 .orElse(null);
 
-        return new PayPalResponseDTO(orderId, approvalLink);
     }
 }

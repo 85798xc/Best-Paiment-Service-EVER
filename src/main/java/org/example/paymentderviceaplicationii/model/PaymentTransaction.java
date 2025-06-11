@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Setter
 public class PaymentTransaction extends BaseEntity {
 
-    private BigDecimal amount;
+    private Long amount;
 
     private String currency;
 
@@ -28,11 +28,7 @@ public class PaymentTransaction extends BaseEntity {
 
     private String description;
 
-    private String destination;
-
-    @ManyToOne
-    @JoinColumn(name = "bank_account_id")
-    private BankAccount bankAccount;
+    private String userPaymentEmail;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

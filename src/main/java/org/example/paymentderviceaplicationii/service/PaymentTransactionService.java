@@ -2,6 +2,6 @@ package org.example.paymentderviceaplicationii.service;
 
 import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
 
-public interface EmailSenderService {
-    String sendEmail(PaymentTransactionRequestDTO request);
+public interface PaymentTransactionService {
+    String createPaymentTransaction(PaymentTransactionRequestDTO request);
 }

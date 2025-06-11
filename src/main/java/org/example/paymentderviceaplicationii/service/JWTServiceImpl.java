@@ -51,6 +51,7 @@ public class JWTServiceImpl implements JWTService {
         return extractClaim(token, Claims::getSubject);
     }
 
+
     @Override
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);

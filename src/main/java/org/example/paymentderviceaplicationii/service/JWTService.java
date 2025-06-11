@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.function.Function;
 
 public interface JWTService {
-    String generateToken(String username);
+    String generateToken(String email);
 
     SecretKey getSecretKey();
 

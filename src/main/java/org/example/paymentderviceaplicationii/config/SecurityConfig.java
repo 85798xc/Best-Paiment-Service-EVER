@@ -34,7 +34,7 @@ public class SecurityConfig {
                     .csrf(AbstractHttpConfigurer::disable)
                     .authorizeHttpRequests(request -> request
                             .requestMatchers(
-                                    "/auth/**", "/person/**"
+                                    "/auth/**", "/user/**"
                             ).permitAll()
                             .anyRequest().authenticated())
                     .httpBasic(Customizer.withDefaults())
@@ -63,7 +63,10 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers(
-                "/swagger-ui/**", "/v3/api-docs*/**", "/stripe-test"
+                "/swagger-ui/**", "/v3/api-docs*/**",
+                "/stripe-test", "/paypal-test",
+                "/mail-sender-test", "/payment-transaction-test",
+                "/auth-test", "/product/v1/success", "/product/v1/success/**"
         );
     }
 
