@@ -4,10 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.User;
 import org.example.paymentderviceaplicationii.model.dto.LoginDTO;
 import org.example.paymentderviceaplicationii.model.dto.UserDTO;
+import org.example.paymentderviceaplicationii.model.enums.Role;
 import org.example.paymentderviceaplicationii.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,13 +22,11 @@ public class AuthServiceImpl  implements AuthService{
 
     private final AuthenticationManager authenticationManager;
 
+    private final UserServiceImpl userServiceImpl;
+
     @Override
     public String registerUser(UserDTO userDTO) {
-        User user = new User();
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-
-        userRepository.save(user);
+        userServiceImpl.createUser(userDTO);
 
         return jwtService.generateToken(userDTO.getUsername());
     }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.dto.LoginDTO;
 import org.example.paymentderviceaplicationii.model.dto.UserDTO;
 import org.example.paymentderviceaplicationii.service.AuthService;
+import org.example.paymentderviceaplicationii.service.AuthServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,17 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
-    private final AuthService authService;
+    private final AuthServiceImpl authServiceimpl;
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
-        String token = authService.registerUser(userDTO);
+        String token = authServiceimpl.registerUser(userDTO);
         return ResponseEntity.ok(token);
     }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO) {
-        String token = authService.loginUser(loginDTO);
+        String token = authServiceimpl.loginUser(loginDTO);
         return ResponseEntity.ok(token);
     }
 }
