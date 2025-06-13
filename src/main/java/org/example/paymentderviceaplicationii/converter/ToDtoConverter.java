@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ToDtoConverter {
-    public PaymentTransactionDTO toDto(PaymentTransaction t) {
+    public PaymentTransactionDTO TransactionToDto(PaymentTransaction t) {
         return new PaymentTransactionDTO(
                 t.getId(),
                 t.getAmount(),

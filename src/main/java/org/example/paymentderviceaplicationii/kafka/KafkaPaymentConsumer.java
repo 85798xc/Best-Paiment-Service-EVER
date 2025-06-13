@@ -1,5 +1,4 @@
 package org.example.paymentderviceaplicationii.kafka;
-import org.example.paymentderviceaplicationii.model.PaymentTransactionDTO;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -9,11 +8,9 @@ import org.springframework.stereotype.Component;
 public class KafkaPaymentConsumer {
 
     @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "payment-group")
-    public void listen(PaymentTransactionDTO paymentTransaction,
-                       @Header(KafkaHeaders.RECEIVED_PARTITION) int partition) {
+    public void listen(@Header(KafkaHeaders.RECEIVED_PARTITION) int partition) {
 
         String output;
-
         switch (partition) {
             case 0 -> output = "Payment Transaction is successful";
             case 1 -> output = "Payment Transaction is still processing";
