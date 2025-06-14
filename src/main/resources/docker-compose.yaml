@@ -13,7 +13,7 @@ services:
       - db
   db:
     image: 'postgres:latest'
-    container_name: db
+    container_name: payment_service_db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

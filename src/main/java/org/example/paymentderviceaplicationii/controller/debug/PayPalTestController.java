@@ -1,8 +1,7 @@
-package org.example.paymentderviceaplicationii.controller;
+package org.example.paymentderviceaplicationii.controller.debug;
 
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.dto.PayPalRequestDTO;
-import org.example.paymentderviceaplicationii.model.dto.PayPalResponseDTO;
 import org.example.paymentderviceaplicationii.service.PayPalService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

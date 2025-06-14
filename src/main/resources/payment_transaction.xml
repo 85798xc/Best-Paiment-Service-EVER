@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <paymentTransactionRequestDTO>
-    <amount>69</amount>
+    <amount>99</amount>
     <currency>EUR</currency>
     <status>SUCCESS</status>
-    <description>test transaction</description>
-    <userPaymentEmail>imatveyadam@gmail.com</userPaymentEmail>
+    <description>Premium OnlyFans Subscription</description>
+    <userPaymentEmail>xxxxxxxlbanana@gmail.com</userPaymentEmail>
 </paymentTransactionRequestDTO>
