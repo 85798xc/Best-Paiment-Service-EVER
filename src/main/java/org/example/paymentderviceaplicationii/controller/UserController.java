@@ -1,14 +1,13 @@
 package org.example.paymentderviceaplicationii.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.User;
 import org.example.paymentderviceaplicationii.model.dto.UserDTO;
 import org.example.paymentderviceaplicationii.service.UserServiceImpl;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/users")
@@ -34,46 +33,50 @@ public class UserController {
     private final UserServiceImpl userServiceimpl;
 
     @Operation(summary = "Create a new user (ADMIN only)")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully created user",
+            content = @Content(mediaType = "application/json"))
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<EntityModel<User>> createUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<User> createUser(@RequestBody UserDTO userDTO) {
         User user = userServiceimpl.createUser(userDTO);
-        EntityModel<User> resource = toUserModel(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(resource);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
     @Operation(summary = "Get all users (ADMIN only)")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully got all users",
+            content = @Content(mediaType = "application/json"))
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<CollectionModel<EntityModel<User>>> getAllUsers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userServiceimpl.getAllUsers();
-        List<EntityModel<User>> userModels = users.stream()
-                .map(this::toUserModel)
-                .collect(Collectors.toList());
-
-        CollectionModel<EntityModel<User>> collection = CollectionModel.of(userModels);
-        collection.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserController.class)
-                .getAllUsers()).withSelfRel());
-
-        return ResponseEntity.ok(collection);
+        return ResponseEntity.ok(users);
     }
 
     @Operation(summary = "Get current authenticated user")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully got current authenticated user user",
+            content = @Content(mediaType = "application/json"))
     @GetMapping("/me")
-    public ResponseEntity<EntityModel<User>> getCurrentUser(@AuthenticationPrincipal User user) {
-        EntityModel<User> resource = toUserModel(user);
-        return ResponseEntity.ok(resource);
+    public ResponseEntity<User> getCurrentUser(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(user);
     }
 
     @Operation(summary = "Update user by ID")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully updated user",
+            content = @Content(mediaType = "application/json"))
     @PutMapping("/{id}")
-    public ResponseEntity<EntityModel<User>> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
-        User updated = userServiceimpl.updateUser(id, userDTO);
-        EntityModel<User> resource = toUserModel(updated);
-        return ResponseEntity.ok(resource);
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        User user = userServiceimpl.updateUser(id, userDTO);
+        return ResponseEntity.ok(user);
     }
 
     @Operation(summary = "Delete user by ID (ADMIN only)")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully deleted user",
+            content = @Content(mediaType = "application/json"))
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
@@ -82,14 +85,5 @@ public class UserController {
     }
 
 
-    private EntityModel<User> toUserModel(User user) {
-        EntityModel<User> model = EntityModel.of(user);
-        model.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserController.class)
-                .getCurrentUser(user)).withRel("self"));
-        model.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserController.class)
-                .updateUser(user.getId(), null)).withRel("update"));
-        model.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserController.class)
-                .deleteUser(user.getId())).withRel("delete"));
-        return model;
-    }
+
 }
