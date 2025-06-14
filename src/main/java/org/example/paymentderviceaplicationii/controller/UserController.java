@@ -1,5 +1,9 @@
 package org.example.paymentderviceaplicationii.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.User;
 import org.example.paymentderviceaplicationii.model.dto.UserDTO;
@@ -19,12 +23,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Tag(name = "Users", description = "Operations related to user management")
 public class UserController {
+
     private final UserServiceImpl userServiceimpl;
 
+    @Operation(summary = "Create a new user (ADMIN only)")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully created user",
+            content = @Content(mediaType = "application/json"))
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<User> createUser(@RequestBody UserDTO userDTO) {
@@ -32,30 +43,47 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
+    @Operation(summary = "Get all users (ADMIN only)")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully got all users",
+            content = @Content(mediaType = "application/json"))
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userServiceimpl.getAllUsers());
+        List<User> users = userServiceimpl.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
+    @Operation(summary = "Get current authenticated user")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully got current authenticated user user",
+            content = @Content(mediaType = "application/json"))
     @GetMapping("/me")
     public ResponseEntity<User> getCurrentUser(@AuthenticationPrincipal User user) {
         return ResponseEntity.ok(user);
     }
 
+    @Operation(summary = "Update user by ID")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully updated user",
+            content = @Content(mediaType = "application/json"))
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(
-            @PathVariable Long id,
-            @RequestBody UserDTO userDTO
-    ) {
-        return ResponseEntity.ok(userServiceimpl.updateUser(id, userDTO));
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        User user = userServiceimpl.updateUser(id, userDTO);
+        return ResponseEntity.ok(user);
     }
 
-
+    @Operation(summary = "Delete user by ID (ADMIN only)")
+    @ApiResponse(responseCode = "200",
+            description = "Successfully deleted user",
+            content = @Content(mediaType = "application/json"))
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userServiceimpl.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
+
+
+
 }

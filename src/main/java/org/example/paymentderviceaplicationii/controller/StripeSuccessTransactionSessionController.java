@@ -2,6 +2,9 @@ package org.example.paymentderviceaplicationii.controller;
 
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
 import org.example.paymentderviceaplicationii.model.enums.Status;
@@ -16,6 +19,10 @@ public class StripeSuccessTransactionSessionController {
 
     public final EmailSenderService emailSenderService;
 
+    @Operation(summary = "Handle successful payment redirect")
+    @ApiResponse(responseCode = "200",
+            description = "HTML success page returned",
+            content = @Content(mediaType = "text/html"))
     @GetMapping("/product/v1/success")
     public void getSession(@RequestParam("session_id") String sessionId) throws StripeException {
         Session session = Session.retrieve(sessionId);
