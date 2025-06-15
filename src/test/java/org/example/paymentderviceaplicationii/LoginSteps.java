@@ -6,22 +6,13 @@ import io.cucumber.java.en.When;
 import org.example.paymentderviceaplicationii.model.dto.LoginDTO;
 import org.example.paymentderviceaplicationii.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class LoginSteps {
-
-    @LocalServerPort
-    private int port;
+public class LoginSteps extends CucumberSpringConfig {
 
     @Autowired
     private UserRepository userRepository;
@@ -39,7 +30,6 @@ public class LoginSteps {
 
     @When("I POST to {string} with email {string} and password {string}")
     public void i_post_to_auth_login_with_email_and_password(String url, String email, String password) {
-        RestTemplate restTemplate = new RestTemplate();
         String fullUrl = "http://localhost:" + port + url;
 
         LoginDTO loginDTO = new LoginDTO(email, password);
