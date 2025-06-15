@@ -66,8 +66,8 @@ public class SecurityConfig {
                 "/swagger-ui/**", "/v3/api-docs*/**",
                 "/stripe-test", "/paypal-test",
                 "/mail-sender-test", "/payment-transaction-test",
-                "/auth-test", "/product/v1/success", "/product/v1/success/**",
-                "/auth/register"
+                "/auth-test", "/stripe/success",
+                "/stripe/success/**", "/stripe/failed/**"
         );
     }
 

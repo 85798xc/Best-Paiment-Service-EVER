@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.model.User;
 import org.example.paymentderviceaplicationii.model.dto.UserDTO;
-import org.example.paymentderviceaplicationii.service.UserServiceImpl;
+import org.example.paymentderviceaplicationii.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,7 +30,7 @@ import java.util.List;
 @Tag(name = "Users", description = "Operations related to user management")
 public class UserController {
 
-    private final UserServiceImpl userServiceimpl;
+    private final UserService userService;
 
     @Operation(summary = "Create a new user (ADMIN only)")
     @ApiResponse(responseCode = "200",
@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<User> createUser(@RequestBody UserDTO userDTO) {
-        User user = userServiceimpl.createUser(userDTO);
+        User user = userService.createUser(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
@@ -50,7 +50,7 @@ public class UserController {
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userServiceimpl.getAllUsers();
+        List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
@@ -69,7 +69,7 @@ public class UserController {
             content = @Content(mediaType = "application/json"))
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
-        User user = userServiceimpl.updateUser(id, userDTO);
+        User user = userService.updateUser(id, userDTO);
         return ResponseEntity.ok(user);
     }
 
@@ -80,10 +80,9 @@ public class UserController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userServiceimpl.deleteUser(id);
+        userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
-
 
 
 }
