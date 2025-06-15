@@ -1,6 +1,7 @@
 package org.example.paymentderviceaplicationii.controller.debug;
 
 import lombok.RequiredArgsConstructor;
+import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionDTO;
 import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
 import org.example.paymentderviceaplicationii.model.enums.PaymentProvider;
 import org.example.paymentderviceaplicationii.model.enums.Status;
@@ -24,7 +25,6 @@ public class PaymentTransactionTestController {
         request.setUserPaymentEmail("imatveyadam@gmail.com");
         request.setAmount(69L);
         request.setCurrency("EUR");
-        request.setStatus(Status.SUCCESS);
         request.setDescription("test transaction");
 
         return paymentTransactionService.createPaymentTransaction(request);

@@ -2,7 +2,8 @@ package org.example.paymentderviceaplicationii.controller.debug;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
+import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionDTO;
+import org.example.paymentderviceaplicationii.model.enums.PaymentProvider;
 import org.example.paymentderviceaplicationii.service.EmailSenderService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,8 @@ public class MailSenderTestController {
     public String sentEmail() {
         log.info("Sending email to {}", "imatveyadam@gmail.com");
 
-        PaymentTransactionRequestDTO request = new PaymentTransactionRequestDTO();
+        PaymentTransactionDTO request = new PaymentTransactionDTO();
+        request.setPaymentProvider(PaymentProvider.STRIPE);
         request.setUserPaymentEmail("imatveyadam@gmail.com");
         request.setAmount(100L);
         request.setCurrency("EUR");

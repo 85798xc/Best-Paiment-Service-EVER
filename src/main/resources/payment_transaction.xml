@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<paymentTransactionRequestDTO>
-    <amount>99</amount>
-    <currency>EUR</currency>
+<paymentTransactionDTO>
+    <paymentProvider>STRIPE</paymentProvider>
+    <amount>777</amount>
+    <currency>eur</currency>
     <status>SUCCESS</status>
-    <description>Premium OnlyFans Subscription</description>
-    <userPaymentEmail>xxxxxxxlbanana@gmail.com</userPaymentEmail>
-</paymentTransactionRequestDTO>
+    <description>test</description>
+    <userPaymentEmail>imatveyadam@gmail.com</userPaymentEmail>
+</paymentTransactionDTO>

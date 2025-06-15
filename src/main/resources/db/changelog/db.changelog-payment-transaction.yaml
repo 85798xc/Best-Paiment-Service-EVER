@@ -13,6 +13,11 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
+                  name: payment_provider
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
                   name: amount
                   type: decimal(19, 2)
                   constraints:
@@ -33,7 +38,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: userPaymentEmail
+                  name: user_payment_email
                   type: varchar(255)
                   constraints:
                     nullable: false

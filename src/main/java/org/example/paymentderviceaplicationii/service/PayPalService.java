@@ -3,8 +3,6 @@ package org.example.paymentderviceaplicationii.service;
 import lombok.RequiredArgsConstructor;
 import org.example.paymentderviceaplicationii.config.PayPalConfig;
 import org.example.paymentderviceaplicationii.model.dto.PayPalRequestDTO;
-import org.example.paymentderviceaplicationii.model.dto.PayPalResponseDTO;
-import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
