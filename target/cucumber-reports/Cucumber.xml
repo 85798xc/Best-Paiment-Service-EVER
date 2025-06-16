@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="5.419" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-06-16T18:11:02.735962700Z">
-<testcase classname="User services" name="Create a new user" time="1.116">
+<testsuite name="Cucumber" time="23.308" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-06-16T20:36:06.085093800Z">
+<testcase classname="User services" name="Create a new user" time="1.634">
 <system-out><![CDATA[
 Given I have new user data with username "kietakaktis", email "tavo@kakta", and password "VenaIsKaktos".passed
 When I send a POST request to "/users" to create the user...................passed
@@ -9,7 +9,7 @@ And the response should contain username "kietakaktis"......................pass
 And the response should contain email "tavo@kakta"..........................passed
 ]]></system-out>
 </testcase>
-<testcase classname="User services" name="Get all users list" time="0.039">
+<testcase classname="User services" name="Get all users list" time="0.046">
 <system-out><![CDATA[
 Given there are two users in the system.....................................passed
 When I send a GET request to "/users".......................................passed
@@ -20,14 +20,14 @@ And the response should contain user with username "lukas" of user list.....pass
 And the response should contain user with email "lukas@nesakysiu" of user list.passed
 ]]></system-out>
 </testcase>
-<testcase classname="User services" name="Delete a user by ID" time="0.025">
+<testcase classname="User services" name="Delete a user by ID" time="0.029">
 <system-out><![CDATA[
 Given a user with ID 9 exists...............................................passed
 When I send a DELETE request to "/users/9"..................................passed
 Then the response status of delete request should be 204....................passed
 ]]></system-out>
 </testcase>
-<testcase classname="User services" name="Update a user by ID" time="0.025">
+<testcase classname="User services" name="Update a user by ID" time="0.035">
 <system-out><![CDATA[
 Given a user with ID value of 9 exists......................................passed
 And I have updated user data with username "homer", email "homer@simpson.com", and password "lovesbeer".passed
