@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="12.061">
+    <testcase classname="Login" name="With valid credentials" time="1.146">
+        <system-out><![CDATA[Given a user exists with email "opa@1" and password "saugus"................passed
+When I POST to "/auth/login" with email "opa@1" and password "saugus".......passed
+Then I should receive a 200 status and a non-empty JWT token................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login" name="With invalid password" time="0.268">
+        <system-out><![CDATA[Given a user exists with email "opa@1" and password "nesaugus"..............passed
+When I POST to "/auth/login" with email "opa@1" and password "nesaugus".....passed
+Then I should receive a 401 status..........................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
