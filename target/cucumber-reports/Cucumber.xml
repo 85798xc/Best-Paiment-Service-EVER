@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="13.416" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-06-16T12:51:35.779336200Z">
-<testcase classname="User services" name="Create a new user" time="1.542">
+<testsuite name="Cucumber" time="5.419" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-06-16T18:11:02.735962700Z">
+<testcase classname="User services" name="Create a new user" time="1.116">
 <system-out><![CDATA[
 Given I have new user data with username "kietakaktis", email "tavo@kakta", and password "VenaIsKaktos".passed
 When I send a POST request to "/users" to create the user...................passed
@@ -9,6 +9,32 @@ And the response should contain username "kietakaktis"......................pass
 And the response should contain email "tavo@kakta"..........................passed
 ]]></system-out>
 </testcase>
-<testcase classname="User services" name="" time="0.001">
+<testcase classname="User services" name="Get all users list" time="0.039">
+<system-out><![CDATA[
+Given there are two users in the system.....................................passed
+When I send a GET request to "/users".......................................passed
+Then the response status should be a 200....................................passed
+And the response should contain user with username "tomas" of user list.....passed
+And the response should contain user with email "tomas@nesakysiu" of user list.passed
+And the response should contain user with username "lukas" of user list.....passed
+And the response should contain user with email "lukas@nesakysiu" of user list.passed
+]]></system-out>
+</testcase>
+<testcase classname="User services" name="Delete a user by ID" time="0.025">
+<system-out><![CDATA[
+Given a user with ID 9 exists...............................................passed
+When I send a DELETE request to "/users/9"..................................passed
+Then the response status of delete request should be 204....................passed
+]]></system-out>
+</testcase>
+<testcase classname="User services" name="Update a user by ID" time="0.025">
+<system-out><![CDATA[
+Given a user with ID value of 9 exists......................................passed
+And I have updated user data with username "homer", email "homer@simpson.com", and password "lovesbeer".passed
+When I send a PUT request to "/users/9" to update the user..................passed
+Then the response status of update request should be 200....................passed
+And the response should contain updated user with username "homer"..........passed
+And the response should contain updated user with email "homer@simpson.com".passed
+]]></system-out>
 </testcase>
 </testsuite>

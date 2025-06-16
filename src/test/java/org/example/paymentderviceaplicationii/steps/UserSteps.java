@@ -1,30 +1,23 @@
-package org.example.paymentderviceaplicationii;
+package org.example.paymentderviceaplicationii.steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
+import org.example.paymentderviceaplicationii.CucumberConfig;
 import org.example.paymentderviceaplicationii.model.User;
 import org.example.paymentderviceaplicationii.model.dto.UserDTO;
-import org.example.paymentderviceaplicationii.service.UserService;
 import org.junit.jupiter.api.Assertions;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
-@CucumberContextConfiguration
-public class UserSteps extends CucumberConfig{
+public class UserSteps extends CucumberConfig {
 
     private MvcResult mvcResult;
     private UserDTO testUserDTO;
     private User mockUser;
-
-    @Mock
-    private UserService userService;
 
     @Given("I have new user data with username {string}, email {string}, and password {string}")
     public void i_have_new_user_data(String username, String email, String password) {
@@ -38,7 +31,7 @@ public class UserSteps extends CucumberConfig{
         mockUser.setUsername(username);
         mockUser.setEmail(email);
 
-        Mockito.when(userService.createUser(Mockito.any(UserDTO.class))).thenReturn(mockUser);
+        Mockito.when(userService.createUser(Mockito.any())).thenReturn(mockUser);
     }
 
     @When("I send a POST request to {string} to create the user")
