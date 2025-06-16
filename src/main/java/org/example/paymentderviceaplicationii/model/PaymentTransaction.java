@@ -1,15 +1,18 @@
 package org.example.paymentderviceaplicationii.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.paymentderviceaplicationii.converter.PaymentProviderConverter;
 import org.example.paymentderviceaplicationii.converter.StatusConverter;
+import org.example.paymentderviceaplicationii.model.enums.PaymentProvider;
 import org.example.paymentderviceaplicationii.model.enums.Status;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "payment_transaction")
@@ -18,6 +21,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class PaymentTransaction extends BaseEntity {
+    @Convert(converter = PaymentProviderConverter.class)
+    private PaymentProvider paymentProvider;
 
     private Long amount;
 

@@ -1,21 +1,94 @@
 package org.example.paymentderviceaplicationii.service;
 
+import lombok.RequiredArgsConstructor;
+import org.example.paymentderviceaplicationii.exception.UserListNotFoundException;
+import org.example.paymentderviceaplicationii.exception.UserNotFoundException;
 import org.example.paymentderviceaplicationii.model.User;
+import org.example.paymentderviceaplicationii.model.dto.UserDTO;
+import org.example.paymentderviceaplicationii.model.enums.Role;
+import org.example.paymentderviceaplicationii.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface UserService {
-    User getUserById(Long userId);
+@Service
+@RequiredArgsConstructor
+public class UserService {
 
-    User getUserByEmail(String email);
+    private final UserRepository userRepository;
 
-    User getByUsername(String username);
+    private final PasswordEncoder passwordEncoder;
 
-    List<User> getAllUsers();
+    public User createUser(UserDTO userDTO) {
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setEmail(userDTO.getEmail());
+        user.setRole(Role.USER);
+        return userRepository.save(user);
+    }
 
-    void deleteUserById(Long userId);
+    public User getUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("by id: " + userId));
+    }
 
-    void deleteUserByEmail(String email);
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
-    void deleteAllUsers();
+    public User getByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            throw new UserNotFoundException("by username: " + username);
+        }
+
+        return user;
+    }
+
+    public List<User> getAllUsers() {
+        List<User> userList = userRepository.findAll();
+
+        if(userList.isEmpty()){
+            throw new UserListNotFoundException();
+        }
+
+        return userList;
+    }
+
+    public void deleteUserById(Long userId) {
+        User user = getUserById(userId);
+
+        userRepository.delete(user);
+    }
+
+    public void deleteUserByEmail(String email) {
+        User user = getUserByEmail(email);
+
+        userRepository.delete(user);
+    }
+
+    public void deleteAllUsers() {
+        if(userRepository.count() == 0) {
+            throw new UserListNotFoundException();
+        }
+
+        userRepository.deleteAll();
+    }
+
+    public User updateUser(Long id, UserDTO userDTO) {
+        userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("by id: " + id));
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setEmail(userDTO.getEmail());
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("by id: " + id));
+        userRepository.deleteById(id);
+    }
 }

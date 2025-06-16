@@ -17,7 +17,7 @@ public class AuthTestingController {
 
     private final UserRepository  userRepository;
 
-    private final JWTService  jwtService;
+    private final JWTService jwtService;
 
     private final BCryptPasswordEncoder encoder;
 
