@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="13.416" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-06-16T12:51:35.779336200Z">
+<testcase classname="User services" name="Create a new user" time="1.542">
+<system-out><![CDATA[
+Given I have new user data with username "kietakaktis", email "tavo@kakta", and password "VenaIsKaktos".passed
+When I send a POST request to "/users" to create the user...................passed
+Then the response status should be 201......................................passed
+And the response should contain username "kietakaktis"......................passed
+And the response should contain email "tavo@kakta"..........................passed
+]]></system-out>
+</testcase>
+<testcase classname="User services" name="" time="0.001">
+</testcase>
+</testsuite>
