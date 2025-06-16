@@ -34,7 +34,7 @@ public class SecurityConfig {
                     .csrf(AbstractHttpConfigurer::disable)
                     .authorizeHttpRequests(request -> request
                             .requestMatchers(
-                                    "/auth/**", "/user/**"
+                                    "/auth/**", "/user/**", "/api/auth/**", "/api/auth/register"
                             ).permitAll()
                             .anyRequest().authenticated())
                     .httpBasic(Customizer.withDefaults())
@@ -66,8 +66,9 @@ public class SecurityConfig {
                 "/swagger-ui/**", "/v3/api-docs*/**",
                 "/stripe-test", "/paypal-test",
                 "/mail-sender-test", "/payment-transaction-test",
-                "/auth-test", "/stripe/success",
-                "/stripe/success/**", "/stripe/failed/**"
+                "/auth-test", "/product/v1/success", "/product/v1/success/**",
+                "/stripe/failed/**"
+
         );
     }
 
