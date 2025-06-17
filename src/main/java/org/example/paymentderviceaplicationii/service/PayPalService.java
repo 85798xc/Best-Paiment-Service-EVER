@@ -64,8 +64,8 @@ public class PayPalService {
         purchaseUnit.put("description", requestDTO.getDescription());
         orderRequest.put("purchase_units", List.of(purchaseUnit));
         orderRequest.put("application_context", Map.of(
-                "return_url", "https://example.com/return",
-                "cancel_url", "https://example.com/cancel"
+                "return_url", "http://localhost:8080/stripe/success",
+                "cancel_url", "http://localhost:8080/stripe/failed"
         ));
 
         String paypalApiBase = payPalConfig.getMode().equalsIgnoreCase("sandbox")

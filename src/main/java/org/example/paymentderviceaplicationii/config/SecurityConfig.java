@@ -67,7 +67,7 @@ public class SecurityConfig {
                 "/stripe-test", "/paypal-test",
                 "/mail-sender-test", "/payment-transaction-test",
                 "/auth-test", "/product/v1/success", "/product/v1/success/**",
-                "/stripe/failed/**"
+                "/stripe/success/**","/stripe/failed/**"
 
         );
     }
