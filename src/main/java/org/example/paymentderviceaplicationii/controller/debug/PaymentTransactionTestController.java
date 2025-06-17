@@ -1,10 +1,8 @@
 package org.example.paymentderviceaplicationii.controller.debug;
 
 import lombok.RequiredArgsConstructor;
-import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionDTO;
 import org.example.paymentderviceaplicationii.model.dto.PaymentTransactionRequestDTO;
 import org.example.paymentderviceaplicationii.model.enums.PaymentProvider;
-import org.example.paymentderviceaplicationii.model.enums.Status;
 import org.example.paymentderviceaplicationii.service.PaymentTransactionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
