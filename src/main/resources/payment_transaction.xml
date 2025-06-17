@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <paymentTransactionDTO>
     <paymentProvider>STRIPE</paymentProvider>
-    <amount>777</amount>
+    <amount>45</amount>
     <currency>eur</currency>
     <status>SUCCESS</status>
-    <description>test</description>
+    <description>swagger test</description>
     <userPaymentEmail>imatveyadam@gmail.com</userPaymentEmail>
 </paymentTransactionDTO>
